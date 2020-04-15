@@ -18,7 +18,7 @@ const server = express();
 // ---- INITIALIZING THE DATABASE(POSTGRESQL) --- //
 // UNCOMMENT AFTER FILLING THE .env FILE WITH DATABASE CREDENTIALS
 
-/*
+
 const { Pool } = require('pg');
 const dbParams = require('./lib/db');
 const db = new Pool(dbParams);
@@ -33,7 +33,7 @@ db.connect();
 //   })
 // );
 
-*/
+
 
 server.use(cors());
 server.use(cookieParser());
@@ -62,13 +62,13 @@ const usersServiceFactory = require('./service/usersServices');
 const sampleRepositoryFactory = require('./repository/sampleRepository');
 const usersRepositoryFactory = require('./repository/usersRepository');
 
-// ---- SETTING UP THE REPOSITORY AND SERVICE TO BE USED BY ROUTE -- // 
+// ---- SETTING UP THE REPOSITORY AND SERVICE TO BE USED BY ROUTE -- //
 // const sampleRepository = sampleRepositoryFactory(db); // <-- UNCOMMENT WHEN db section is UNCOMMENTED
 const sampleRepository = sampleRepositoryFactory();     //  <-- DELETE THIS LINE IF THE ABOVE LINE IS UNCOMMENTED
 const sampelService = sampleServiceFactory(sampleRepository);
 
-// const usersRepository = usersRepositoryFactory(db); // <-- UNCOMMENT WHEN db section is UNCOMMENTED
-const usersRepository = usersRepositoryFactory();
+const usersRepository = usersRepositoryFactory(db); // <-- UNCOMMENT WHEN db section is UNCOMMENTED
+// const usersRepository = usersRepositoryFactory();
 const userService = usersServiceFactory(usersRepository);
 
 // ---- SERVER ROUTING -------------------------------------- // <-- Routes takes service as params which in turn takes repository as params
