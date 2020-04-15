@@ -15,6 +15,19 @@ module.exports = userService => {
       });
   });
 
+  router.get("/walmart", (req, res) => {
+    userService
+      .getWalmartAddress()
+      .then(data => {
+        console.log("data is", data);
+        const walmartAddress = data.rows;
+        res.json({ walmartAddress });
+      })
+      .catch(err => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
   router.get(
     "/auth/google",
     passport.authenticate("google", {
