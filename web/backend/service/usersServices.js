@@ -1,7 +1,7 @@
 module.exports = userRepository => {
   return {
-    getAllUser: () => {
-      userRepository.getAllUser();
+    getAllUsers: () => {
+      return userRepository.getAllUsers();
     }
   };
 };
