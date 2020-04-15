@@ -5,7 +5,7 @@ const passport = require("passport");
 module.exports = userService => {
   router.get("/", (req, res) => {
     userService
-      .getAllUser()
+      .getAllUsers()
       .then(data => {
         const users = data.rows;
         res.json({ users });
