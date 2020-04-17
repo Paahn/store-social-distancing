@@ -17,7 +17,8 @@ module.exports = db => {
       JOIN users ON reservations.user_id = users.id
       JOIN stores ON reservations.store_id = stores.id
       WHERE users.id = 1
-      GROUP BY reservations.id;`
+      GROUP BY users.first_name, stores.name, reservations.id;`;
+      return db.query(qs);
     }
   };
 };
