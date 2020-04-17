@@ -28,6 +28,18 @@ module.exports = userService => {
       });
   });
 
+  router.get("/tausif", (req, res) => {
+    userService
+      .getUserReservations()
+      .then(data => {
+        const userData = data.rows;
+        res.json({ userData });
+      })
+      .catch(err => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
   router.get(
     "/auth/google",
     passport.authenticate("google", {
