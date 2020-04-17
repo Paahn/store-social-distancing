@@ -5,6 +5,9 @@ module.exports = userRepository => {
     },
     getWalmartAddress: () => {
       return userRepository.getWalmartAddress();
+    },
+    getUserReservations: () => {
+      return userRepository.getUserReservations();
     }
   };
 };
