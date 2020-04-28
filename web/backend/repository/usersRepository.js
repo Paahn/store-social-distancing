@@ -20,6 +20,14 @@ module.exports = db => {
       WHERE users.id = 1
       GROUP BY users.first_name, stores.name, reservations.id, reservations.res_date;`;
       return db.query(qs);
+    },
+    getStoreReservations: () => {
+      const qs = `SELECT reservations.* AS bookings
+      FROM reservations
+      JOIN stores ON reservations.store_id = stores.id
+      WHERE stores.id = 2
+      AND reservations.res_date > now()::date;`;
+      return db.query(qs);
     }
   };
 };
