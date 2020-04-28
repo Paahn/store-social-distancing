@@ -8,6 +8,9 @@ module.exports = userRepository => {
     },
     getUserReservations: () => {
       return userRepository.getUserReservations();
+    },
+    getStoreReservations: () => {
+      return userRepository.getStoreReservations();
     }
   };
 };
